@@ -30,3 +30,13 @@ jobs:
 
       - name: Run tests
         run: pytest
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "autopatch-bot"
+          git config --global user.email "bot@example.com"
+          git add .
+          git commit -m "Auto patch dependencies" || echo "No changes"
+
+      - name: Push changes
+        run: git push
