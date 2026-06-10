@@ -35,17 +35,12 @@ jobs:
       - name: Run tests
         run: pytest
 
-      - name: Commit changes
-        run: |
-          git config --global user.name "autopatch-bot"
-          git config --global user.email "bot@example.com"
-          git add .
-          git commit -m "Auto patch dependencies" || echo "No changes"
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           title: "Auto Patch Dependencies"
           body: "Automated dependency updates using CI"
           branch: auto-patch-branch
           commit-message: "Auto patch dependencies"
+          delete-branch: true
