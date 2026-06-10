@@ -7,6 +7,10 @@ on:
     - cron: "0 2 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   patch:
     runs-on: ubuntu-latest
@@ -38,5 +42,10 @@ jobs:
           git add .
           git commit -m "Auto patch dependencies" || echo "No changes"
 
-      - name: Push changes
-        run: git push
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Auto Patch Dependencies"
+          body: "Automated dependency updates using CI"
+          branch: auto-patch-branch
+          commit-message: "Auto patch dependencies"
