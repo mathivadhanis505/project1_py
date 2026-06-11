@@ -1,0 +1,29 @@
+# 🔐 Secrets
+backend/.env
+.env
+
+# 🐍 Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 🧪 Virtual environments
+venv/
+env/
+.venv/
+
+# 🖥️ OS junk
+.DS_Store
+Thumbs.db
+
+# 🧰 Editor files
+.vscode/
+.idea/
+
+# 📝 Logs
+*.log
+
+# 🔄 Temporary files
+*.tmp
+*.swp
